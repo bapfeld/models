@@ -100,7 +100,7 @@ class SkipThoughtsEncoder(object):
     Args:
       embeddings: Dictionary of word to embedding vector (1D numpy array).
     """
-    self._sentence_detector = nltk.data.load("tokenizers/punkt/english.pickle")
+    self._sentence_detector = nltk.data.load("tokenizers/punkt/spanish.pickle")
     self._embeddings = embeddings
 
   def _create_restore_fn(self, checkpoint_path, saver):
