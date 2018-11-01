@@ -31,6 +31,8 @@ tf.flags.DEFINE_string("input_file_pattern", None,
                        "tf.Example protos.")
 tf.flags.DEFINE_string("train_dir", None,
                        "Directory for saving and loading checkpoints.")
+tf.flags.DEFINE_boolean("bidirectional", False,
+                        "Boolean defining if the model should be as a uni- or bi-directional model")
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -64,7 +66,8 @@ def main(unused_argv):
     raise ValueError("--train_dir is required.")
 
   model_config = configuration.model_config(
-      input_file_pattern=FLAGS.input_file_pattern)
+    input_file_pattern=FLAGS.input_file_pattern,
+    bidirectional_encoder=FLAGS.bidirectional)
   training_config = configuration.training_config()
 
   tf.logging.info("Building training graph.")
