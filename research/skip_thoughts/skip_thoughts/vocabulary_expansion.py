@@ -196,7 +196,7 @@ def main(unused_argv):
     f.write("\n".join(vocab))
   tf.logging.info("Wrote vocabulary file to %s", vocab_file)
 
-  embeddings = np.array(embedding_map.values())
+  embeddings = np.array(list(embedding_map.values()))
   embeddings_file = os.path.join(FLAGS.output_dir, "embeddings.npy")
   np.save(embeddings_file, embeddings)
   tf.logging.info("Wrote embeddings file to %s", embeddings_file)
